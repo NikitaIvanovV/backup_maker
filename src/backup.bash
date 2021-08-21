@@ -1,8 +1,8 @@
 #!/bin/bash
 _backup_included=1
 
-root_dir=$(realpath $(dirname $0))
-[ -z "$_utils_included" ] && source "$root_dir/utils.bash"
+src_dir="$(realpath $(dirname $0))/src"
+[ -z "$_utils_included" ] && source "$src_dir/utils.bash"
 
 function get_backup_list
 {

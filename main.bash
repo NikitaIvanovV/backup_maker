@@ -1,16 +1,16 @@
 #!/bin/bash
 
-root_dir=$(realpath $(dirname $0))
-[ -z "$_backup_included" ] && source "$root_dir/backup.bash"
-[ -z "$_utils_included" ] && source "$root_dir/utils.bash"
+src_dir="$(realpath $(dirname $0))/src"
+[ -z "$_backup_included" ] && source "$src_dir/backup.bash"
+[ -z "$_utils_included" ] && source "$src_dir/utils.bash"
 
 
 # Name of file containing a list of directories to backup.
 # Should be located in the same directory as this script.
 backup_list_file="backup_paths_list.txt"
 
-# Directory to store backups
-backup_dir="$root_dir/backups"
+# Directory to store backups in
+backup_dir="$(realpath $(dirname $0))/backups"
 mkdir -p "$backup_dir"
 
 if ! backup_list=$(get_backup_list "$backup_list_file"); then
