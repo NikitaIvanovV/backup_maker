@@ -51,12 +51,12 @@ function backup_dir
     local timestamp="$(date -u +%F_%H-%M-%S)"
     local backup_file="$backup_dir/${backup_name}_$timestamp.tar.bz2"
 
-    mkdir -p "$backup_dir"
-
     if ! test -e "$path"; then
         echo "Error: path does not exist: \"$path\""
         return 1
     fi
+
+    mkdir -p "$backup_dir"
 
     if test -d "$path"; then
         BZIP2=-9 tar -cjf "$backup_file" -C "$path" .
