@@ -1,6 +1,7 @@
 #!/bin/bash
 
 src_dir="$(realpath $(dirname $0))/src"
+[ -z "$_config_included" ] && source "$src_dir/config.bash"
 [ -z "$_backup_included" ] && source "$src_dir/backup.bash"
 [ -z "$_utils_included" ] && source "$src_dir/utils.bash"
 
@@ -33,6 +34,9 @@ all_names=()
         all_names+="$name"
         if output=$(backup_dir "$name" "$path" "$backup_dir"); then
             echo "Backup for \"$name\" ($path) was created successfully"
+            if ! test -z "$max_backups_to_store"; then
+                clean_backup_dir "$name" "$backup_dir"
+            fi
         else
             echo "$output"
         fi
