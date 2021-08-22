@@ -65,11 +65,7 @@ function backup_dir
 
     mkdir -p "$backup_dir"
 
-    if test -d "$path"; then
-        BZIP2=-9 tar -cjf "$backup_file" -C "$path" .
-    else
-        BZIP2=-9 tar -cjf "$backup_file" -C "$(dirname $path)" "$(basename $path)"
-    fi
+    BZIP2=-9 tar -cjf "$backup_file" -C "$(dirname $path)" "$(basename $path)"
 }
 
 function clean_backup_dir
