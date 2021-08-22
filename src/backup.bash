@@ -18,7 +18,7 @@ function get_backup_list
     cat $backup_list_file | egrep -v '^#'
 }
 
-get_backup_name_path ()
+function get_backup_name_path
 {
     local line="$@"
 

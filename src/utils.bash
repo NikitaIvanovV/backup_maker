@@ -16,9 +16,9 @@ echo -n "" > "$_debug_file"
 
 function print_debug
 {
-    if [ -s "$_debug_file" ]; then
-        echo -e "\nDebug:\n$(cat "$_debug_file")"
-    fi
+    echo
+    echo "Debug:"
+    cat "$_debug_file"
 }
 
 # Use exit_script function to exit script
@@ -26,6 +26,8 @@ function print_debug
 
 function exit_script
 {
-    print_debug
+    if [ -s "$_debug_file" ]; then
+        print_debug
+    fi
     exit "$@"
 }
