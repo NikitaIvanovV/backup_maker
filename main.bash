@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 src_dir="$(realpath $(dirname "$0"))/src"
 [ -z "$_config_included" ] && source "$src_dir/config.bash"

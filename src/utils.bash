@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 _utils_included=1
 
 # Use debug function to print out values for debugging
